@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 
 
 const TogolingBtn = ({friend}) => {
-    const { timeline, setTimeline } = useContext(FriendsContext);
+   
     console.log(timeline,'timeline');
 
   const getDate = () => new Date().toLocaleDateString();
