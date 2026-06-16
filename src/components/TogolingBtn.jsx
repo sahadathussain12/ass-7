@@ -1,98 +1,219 @@
-"use client"
-import { FriendsContext } from '@/contex/ContexProvider';
-import { useContext } from 'react';
-import { BsChatDots } from 'react-icons/bs';
-import { FiVideo } from 'react-icons/fi';
-import { MdCall, MdNotificationsActive } from 'react-icons/md';
-import { toast } from 'react-toastify';
+// "use client"
+// import { FriendsContext } from '@/contex/ContexProvider';
+// import { useContext } from 'react';
+// import { BsChatDots } from 'react-icons/bs';
+// import { FiVideo } from 'react-icons/fi';
+// import { MdCall, MdNotificationsActive } from 'react-icons/md';
+// import { toast } from 'react-toastify';
 
 
 
-const TogolingBtn = ({friend}) => {
+// const TogolingBtn = ({friend}) => {
    
-    console.log(timeline,'timeline');
+//     console.log(timeline,'timeline');
+
+//   const getDate = () => new Date().toLocaleDateString();
+   
+
+   
+
+//   const CallhandleClick = (type,text,friendid) => {
+//     const isExsit = timeline.find(text => text.type === 'call' && text.friendid === friend.id )
+
+//     if(isExsit){
+//           toast.error("Call already exists!");
+//       return
+//     }
+//     setTimeline([
+//       ...timeline,
+//       {
+//         friendid:friend.id,
+//         type: "call",
+//         text: friend.name,
+//         date: getDate(),
+//       },
+//     ]);
+//      toast.success("Call added successfully!");
+//   };
+
+//   const VedeoHandleClicked = (type,text,friendid)=>{
+//     const isExsit = timeline.find(text => text.type === 'video' && text.friendid === friend.id )
+
+//     if(isExsit){
+//           toast.error("Video already exists!");
+//       return
+//     }
+//       setTimeline([
+//       ...timeline,
+//       {
+//         friendid:friend.id,
+//         type: "video",
+//         text: friend.name,
+//         date: getDate(),
+//       },
+//     ]);
+//       toast.success("Video added successfully!");
+//   }
+
+//   const TextHandleClick = (type,text,friendid) => {
+//      const isExsit = timeline.find(text => text.type === 'text' && text.friendid === friend.id )
+
+//     if(isExsit){
+//           toast.error("text already exists!");
+//       return
+//     }
+//     setTimeline([
+//       ...timeline,
+//       {
+//         friendid:friend.id,
+//         type: "text",
+//         text: "Text",
+//         date: getDate(),
+//       },
+//     ]);
+//      toast.success("text added successfully!");
+//   };
+   
+  
+//   return (
+//          <div className="grid grid-cols-3 gap-3">
+//            <button onClick={CallhandleClick} className="border border-gray-300 shadow-lg rounded-lg py-6 flex flex-col items-center gap-1">
+//              <MdCall size={22} />
+//              Call
+//            </button>
+         
+//            <button onClick={TextHandleClick} className="border border-gray-300 shadow-lg rounded-lg py-6 flex flex-col items-center gap-1">
+//              <BsChatDots size={22} />
+//              Text
+//            </button>
+         
+//            <button onClick={VedeoHandleClicked} className="border border-gray-300 shadow-lg rounded-lg py-6 flex flex-col items-center gap-1">
+//              <FiVideo size={22} />
+//              Video
+//            </button>
+//     </div> 
+//     );
+// };
+
+// export default TogolingBtn;
+
+
+"use client";
+
+import { FriendsContext } from "@/contex/ContexProvider";
+import { useContext } from "react";
+import { BsChatDots } from "react-icons/bs";
+import { FiVideo } from "react-icons/fi";
+import { MdCall } from "react-icons/md";
+import { toast } from "react-toastify";
+
+const TogolingBtn = ({ friend }) => {
+  const { timeline, setTimeline } = useContext(FriendsContext);
 
   const getDate = () => new Date().toLocaleDateString();
-   
 
-   
+  // CALL
+  const CallhandleClick = () => {
+    const isExist = timeline?.find(
+      (item) => item.type === "call" && item.friendid === friend.id
+    );
 
-  const CallhandleClick = (type,text,friendid) => {
-    const isExsit = timeline.find(text => text.type === 'call' && text.friendid === friend.id )
-
-    if(isExsit){
-          toast.error("Call already exists!");
-      return
+    if (isExist) {
+      toast.error("Call already exists!");
+      return;
     }
+
     setTimeline([
       ...timeline,
       {
-        friendid:friend.id,
+        friendid: friend.id,
         type: "call",
         text: friend.name,
         date: getDate(),
       },
     ]);
-     toast.success("Call added successfully!");
+
+    toast.success("Call added successfully!");
   };
 
-  const VedeoHandleClicked = (type,text,friendid)=>{
-    const isExsit = timeline.find(text => text.type === 'video' && text.friendid === friend.id )
+  // VIDEO
+  const VedeoHandleClicked = () => {
+    const isExist = timeline?.find(
+      (item) => item.type === "video" && item.friendid === friend.id
+    );
 
-    if(isExsit){
-          toast.error("Video already exists!");
-      return
+    if (isExist) {
+      toast.error("Video already exists!");
+      return;
     }
-      setTimeline([
+
+    setTimeline([
       ...timeline,
       {
-        friendid:friend.id,
+        friendid: friend.id,
         type: "video",
         text: friend.name,
         date: getDate(),
       },
     ]);
-      toast.success("Video added successfully!");
-  }
 
-  const TextHandleClick = (type,text,friendid) => {
-     const isExsit = timeline.find(text => text.type === 'text' && text.friendid === friend.id )
+    toast.success("Video added successfully!");
+  };
 
-    if(isExsit){
-          toast.error("text already exists!");
-      return
+  // TEXT
+  const TextHandleClick = () => {
+    const isExist = timeline?.find(
+      (item) => item.type === "text" && item.friendid === friend.id
+    );
+
+    if (isExist) {
+      toast.error("Text already exists!");
+      return;
     }
+
     setTimeline([
       ...timeline,
       {
-        friendid:friend.id,
+        friendid: friend.id,
         type: "text",
         text: "Text",
         date: getDate(),
       },
     ]);
-     toast.success("text added successfully!");
+
+    toast.success("Text added successfully!");
   };
-   
-  
+
   return (
-         <div className="grid grid-cols-3 gap-3">
-           <button onClick={CallhandleClick} className="border border-gray-300 shadow-lg rounded-lg py-6 flex flex-col items-center gap-1">
-             <MdCall size={22} />
-             Call
-           </button>
-         
-           <button onClick={TextHandleClick} className="border border-gray-300 shadow-lg rounded-lg py-6 flex flex-col items-center gap-1">
-             <BsChatDots size={22} />
-             Text
-           </button>
-         
-           <button onClick={VedeoHandleClicked} className="border border-gray-300 shadow-lg rounded-lg py-6 flex flex-col items-center gap-1">
-             <FiVideo size={22} />
-             Video
-           </button>
-    </div> 
-    );
+    <div className="grid grid-cols-3 gap-3">
+      {/* CALL */}
+      <button
+        onClick={CallhandleClick}
+        className="border border-gray-300 shadow-lg rounded-lg py-6 flex flex-col items-center gap-1"
+      >
+        <MdCall size={22} />
+        Call
+      </button>
+
+      {/* TEXT */}
+      <button
+        onClick={TextHandleClick}
+        className="border border-gray-300 shadow-lg rounded-lg py-6 flex flex-col items-center gap-1"
+      >
+        <BsChatDots size={22} />
+        Text
+      </button>
+
+      {/* VIDEO */}
+      <button
+        onClick={VedeoHandleClicked}
+        className="border border-gray-300 shadow-lg rounded-lg py-6 flex flex-col items-center gap-1"
+      >
+        <FiVideo size={22} />
+        Video
+      </button>
+    </div>
+  );
 };
 
 export default TogolingBtn;
