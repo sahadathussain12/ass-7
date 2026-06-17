@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import data from '../../../public/data.json'
-// 
+
+
 
 
 const FriendPage = async () => {
