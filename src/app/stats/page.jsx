@@ -29,7 +29,7 @@ const StatsPage = () => {
 
   return (
     <div className="max-w-5xl mx-auto">
-      <h1 className="text-3xl font-bold mt-4">Friendship Analytics</h1>
+      <h1 className="text-3xl font-bold mt-4 p-2">Friendship Analytics</h1>
 
       <div className="flex justify-center items-center border border-white shadow-xl m-4 bg-[#FFFFFF]">
         <PieChart width={500} height={500}>
