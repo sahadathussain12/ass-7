@@ -5,11 +5,14 @@ import { BsChatDots } from "react-icons/bs";
 import { FiVideo } from "react-icons/fi";
 import { GoArchive } from "react-icons/go";
 import { MdCall, MdNotificationsActive } from "react-icons/md";
+import data from '../../../../public/data.json'
 
 const FriendDetelsPage = async ({ params }) => {
   const { slag } = await params;
 
-  const res = await fetch("http://localhost:3000/data.json");
+   const res = await fetch("http://localhost:3000/data.json",{
+    cache:"no-store"
+  });
   const friends = await res.json();
 
   const friend = friends.find(
@@ -141,8 +144,6 @@ const FriendDetelsPage = async ({ params }) => {
               Connect every <b>{friend.goal} days</b>
             </p>
           </div>
-
-          {/* Quick Check In */}
           <div className="bg-white rounded-lg shadow p-5">
             <h3 className="font-semibold mb-4">
               Quick Check-In

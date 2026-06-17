@@ -56,7 +56,7 @@ const TimeLinePage = () => {
             </div>
 
             <div>
-              <h3 className="font-semibold">call with {item.text}</h3>
+              <h3 className="font-semibold">{item.text}</h3>
 
               <p className="text-sm text-gray-500">
                 {item.date}
