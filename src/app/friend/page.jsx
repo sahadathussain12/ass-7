@@ -2,14 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 import data from '../../../public/data.json'
-// export const metadata = {
-//   title: 'friend | page',
-//   description: '...',
-// }
+// 
 
 
 const FriendPage = async () => {
-  const res = await fetch("http://localhost:3000/data.json",{
+  const res = await fetch(`${process.env.PUBLIC_URL}/data.json`,{
     cache:"no-store"
   });
   const friends = await res.json();
